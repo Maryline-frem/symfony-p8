@@ -16,7 +16,7 @@ use Doctrine\Persistence\ManagerRegistry;
 class StudentRepository extends ServiceEntityRepository
 {
     use ProfileRepositoryTrait;
-    
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Student::class);
