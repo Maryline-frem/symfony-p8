@@ -22,6 +22,27 @@ class StudentRepository extends ServiceEntityRepository
         parent::__construct($registry, Student::class);
     }
 
+   /**
+   * @return Student[] Returns an array of Student objects
+   */
+   
+    public function findByFirstnameOrLastname($value)
+    {
+        $qb = $this->createQueryBuilder('s');
+        return $qb->where($qb->expr()->orX(
+                $qb->expr()->like('s.firstname', ':value'),
+                $qb->expr()->like('s.lastname', ':value')
+            ))
+            ->setParameter('value', "%{$value}%")
+            ->orderBy('s.firstname', 'ASC')
+            ->orderBy('s.lastname', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
+
     // /**
     //  * @return Student[] Returns an array of Student objects
     //  */

@@ -8,7 +8,7 @@ Trait ProfileRepositoryTrait
 {
     /**
      * Cette fonction permet de récupérer un profil à partir d'un user
-     * @return App\Entity\lientC|App\Entity\Student|App\Entity\Teacher
+     * @return App\Entity\Client|App\Entity\Student|App\Entity\Teacher
      */
     public function findOneByUser(User $user, $role = '')
     {
