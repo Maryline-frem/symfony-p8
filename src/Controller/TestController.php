@@ -61,7 +61,7 @@ class TestController extends AbstractController
 
         // La chaîne de caractères qu'on veut rechercher dans le prénom
         // ou le nom de famille des students.
-        $name = 'Eric';
+        $name = 'remy';
         // Le repository renvoit tous les students qui contiennent la
         // chaîne de caractères recherchée dans le prénom ou le nom de famille.
         $students = $studentRepository->findByFirstnameOrLastname($name);
