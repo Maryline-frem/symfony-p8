@@ -6,6 +6,7 @@ use App\Entity\Project;
 use App\Entity\Student;
 use App\Entity\User;
 use App\Entity\SchoolYear;
+use App\Entity\Tag;
 use App\Entity\Teacher;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
@@ -278,5 +279,26 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
         }
 
         return $teachers;
+    }
+
+    public function loadTags(ObjectManager $manager)
+    {
+        $tags = [];
+
+        $tag = new Tags();
+        $tag->setName('Lorem ipsum');
+
+        $manager->persist($tag);
+        $tags[] = $tag;
+
+        for ($i = 1; $i < 50; $i++) {
+            $tag = new Tag();
+            $tag->setName($this->faker->name());
+
+            $manager->persist($tag);
+            $tags[] = $tag;
+        }
+
+        return $tags;
     }
 }
